@@ -6,74 +6,74 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>FilmFetch</title>
-        <!-- tabler icons cdn -->
+    <!-- tabler icons cdn -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css" />
-        <!-- css -->
+    <!-- css -->
     <link rel="stylesheet" href="style.css">
-        <!-- favicon -->
+    <!-- favicon -->
     <link rel="icon" href="chair-director.png" style="color: white">
 </head>
 <body>
-    <div class="wrapper">
-        <!-- logo -->
-        <div class="logo">
-            <div class="container">
-                <p><i class="ti ti-chair-director"></i> Film<span>Fetch.</span></p>
-            </div>
-        </div>
-        <!-- end logo -->
-        <!-- search container -->
-        <div class="search-container">
-            <div class="search-element">
-                <h3>Search:</h3>
-                <input type="text" class="form-control" placeholder="Search movie titel ..." id="movie-search-box">
-
-                <div class="search-list" id="search-list">
-                    <!-- list -->
-                    <div class="search-list-item">
-                        <div class="search-item-thumbnail">
-                            <img src="medium-cover.jpg">
-                        </div>
-                        <div class="search-item-info">
-                            <h3>Guardians of the Galaxy Vol. 2</h3>
-                            <p>2017</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- end search container -->
-
-        <!-- result container -->
+<div class="wrapper">
+    <!-- logo -->
+    <div class="logo">
         <div class="container">
-            <div class="result-container">
-                <div class="result-grid" id="result-grid">
-                    <!-- movie information-->
-                    <div class="movie-poster">
-                        <img src="medium-cover.jpg" alt="movie poster">
-                        <div>
-                            <div class="movie-info">
-                                <h3 class="movie-title">Guardian of the Galaxy Vol. 2</h3>
-                                <ul class="movie-misc-info">
-                                    <li class="year">Year: 2017</li>
-                                    <li class="rated">Rating: PG-13</li>
-                                    <li class="released">Released: 05 May 2017</li>
-                                </ul>
-                                <p class="genre"><b><i class="ti ti-filter"></i> Genre:</b> Action, Adventure, Comedy</p>
-                                <p class="writer"><b><i class="ti ti-writing"></i> Writer:</b> James Gunn, Don Abnett, Andy Lanning</p>
-                                <p class="actors"><b><i class="ti ti-chair-director"></i> Actors:</b>Chris Pratt, Zoe Saldana, Dave Bautista</p>
-                                <p class="plot"><b><i class="ti ti-device-tv-old"></i> Plot:</b> The Guardians struggle to keep together as a team while dealing with their personal family issues, notably Star-Lord's encounter with his father the ambitious celestial being Ego.</p>
-                                <p class="language"><b><i class="ti ti-language"></i> Language:</b> English</p>
-                                <p class="awards"><b><i class="ti ti-award"></i> Awards:</b> Nominated for 1 Oscar.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <p><i class="ti ti-chair-director"></i> Film<span>Fetch.</span></p>
+        </div>
+    </div>
+    <!-- end logo -->
+    <!-- search container -->
+    <div class="search-container">
+        <div class="search-element">
+            <h3>Search:</h3>
+            <input type="text" class="form-control" placeholder="Search for a movie titel ..." id="movie-search-box" onkeyup="findMovies()">
+
+            <div class="search-list" id="search-list">
+                <!-- list -->
+                <!--                    <div class="search-list-item">-->
+                <!-- <div class="search-item-thumbnail">-->
+                <!--                            <img src="medium-cover.jpg">-->
+                <!--                        </div>-->
+                <!--                        <div class="search-item-info">-->
+                <!--                            <h3>Guardians of the Galaxy Vol. 2</h3>-->
+                <!--                            <p>2017</p>-->
+                <!--                        </div>-->
+                <!--                    </div> -->
             </div>
         </div>
     </div>
+    <!-- end search container -->
 
-        <!-- javascript -->
+    <!-- result container -->
+    <div class="container">
+        <div class="result-container">
+            <div class="result-grid" id="result-grid">
+                <!-- movie information-->
+                <!-- <div class="movie-poster">
+                    <img src="medium-cover.jpg" alt="movie poster">
+                    <div> -->
+                <!-- <div class="movie-info">
+                    <h3 class="movie-title">Guardian of the Galaxy Vol. 2</h3>
+                    <ul class="movie-misc-info">
+                        <li class="year">Year: 2017</li>
+                        <li class="rated">Rating: PG-13</li>
+                        <li class="released">Released: 05 May 2017</li>
+                    </ul>
+                    <p class="genre"><b><i class="ti ti-filter"></i> Genre:</b> Action, Adventure, Comedy</p>
+                    <p class="writer"><b><i class="ti ti-writing"></i> Writer:</b> James Gunn, Don Abnett, Andy Lanning</p>
+                    <p class="actors"><b><i class="ti ti-chair-director"></i> Actors:</b>Chris Pratt, Zoe Saldana, Dave Bautista</p>
+                    <p class="plot"><b><i class="ti ti-device-tv-old"></i> Plot:</b> The Guardians struggle to keep together as a team while dealing with their personal family issues, notably Star-Lord's encounter with his father the ambitious celestial being Ego.</p>
+                    <p class="language"><b><i class="ti ti-language"></i> Language:</b> English</p>
+                    <p class="awards"><b><i class="ti ti-award"></i> Awards:</b> <span>Nominated for 1 Oscar.</span></p>
+                </div> -->
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+
+<!-- javascript -->
 <script src="script.js"></script>
 </body>
 </html>
