@@ -65,10 +65,12 @@ function loadMovieDetails(){
 }
 
 function displayMovieDetails(details){
-    resultGrid.innerHTML = `
+    resultGrid.innerHTML = ` <div class="poster-container">
     <div class = "movie-poster">
         <img src = "${(details.Poster != "N/A") ? details.Poster : "image_not_found.png"}" alt = "movie poster">
     </div>
+    </div>
+    <div class="info-container">
     <div class = "movie-info">
         <h3 class = "movie-title">${details.Title}</h3>
         <ul class = "movie-misc-info">
@@ -81,7 +83,8 @@ function displayMovieDetails(details){
         <p class = "actors"><b>Actors: </b>${details.Actors}</p>
         <p class = "plot"><b>Plot:</b> ${details.Plot}</p>
         <p class = "language"><b>Language:</b> ${details.Language}</p>
-        <p class = "awards"><b><i class = "fas fa-award"></i></b> ${details.Awards}</p>
+        <p class = "awards"><b><i class="ti ti-award"></i> Awards:</b> ${details.Awards}</p>
+    </div>
     </div>
     `;
 }
