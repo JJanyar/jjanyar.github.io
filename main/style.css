@@ -93,16 +93,18 @@
         outline: none;
         color: #3d83ff;
         width: 500px;
-        background-color: #313132;
+        background-color: #18181b;
         filter: drop-shadow(5px 5px 10px rgb(10, 10, 10));
     }
-    .search-list{
+    .search-list {
         position: absolute;
         right: 0;
         top: 100%;
         max-height: 500px;
         overflow-y: scroll;
         z-index: 100;
+        background-color: var(--light-dark-color);
+        border-radius: 8px;
     }
     .search-list .search-list-item {
         background-color: #18181b;
@@ -114,6 +116,7 @@
         background-color: #0c0c0e;
     }
     .search-list-item{
+        width: 500px;
         display: flex;
         align-items: center;
         z-index: 100;
@@ -160,7 +163,7 @@
         padding: 3rem 0;
     }
     .poster-container{
-        padding-top: 50px;
+        padding-top: 9%;
         height: 50vh;
         width: 90%;
         max-width: 400px;
@@ -169,7 +172,7 @@
         outline: none;
         position: relative;
         top: 50%;
-        left: 30%;
+        left: -20%;
         transform: translateY(-50%);
         overflow: hidden;
         border-radius: 10px;
@@ -187,7 +190,7 @@
         outline: none;
         position: relative;
         top: 50%;
-        left: 5%;
+        left: 50%;
         transform: translateY(-50%);
         overflow: hidden;
         border-radius: 10px;
@@ -197,7 +200,7 @@
     .movie-poster img{
         max-width: 300px;
         margin: 0 auto;
-        border-image: 4px solid linear-gradient(to bottom, #2eadff, #3d83ff, #7e61ff);
+        border-color: 4px solid #fff;
         ;
         filter: drop-shadow(5px 5px 10px rgb(10, 10, 10));
     }
@@ -256,7 +259,6 @@
         font-weight: 300;
         color: var(--pink-color);
     }
-    /* voor telefoons */
     @media (max-width: 450px){
         .logo p{
             font-size: 1.4rem;
@@ -290,13 +292,15 @@
             -webkit-box-direction: normal;
             -ms-flex-direction: row;
             flex-direction: row;
+            z-index: 10;
         }
         .search-element h3{
             margin-bottom: 0;
         }
         .result-grid{
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: repeat(auto-fit,minmax(200px, 1fr));
+            z-index: 10;
         }
         .movie-info{
             text-align: left;
@@ -316,10 +320,10 @@
             margin-left: 0;
         }
     }
-/* Search History */
-/* .search-history {
-    top: 65px;
-    left: 900px;
+
+.search-history {
+    top: 900px;
+    left: -330px;
     display: flex;
     flex-direction: column;
     isolation: isolate;
@@ -419,4 +423,4 @@
     text-align: center;
     font-size: 0.9rem;
     width: 75%;
-  } */
+  }

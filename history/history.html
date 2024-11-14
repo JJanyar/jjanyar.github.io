@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FilmFetch - Search History</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css" />
+    <link rel="stylesheet" href="../main/style.css">
+    <link rel="stylesheet" href="../history/history.css">
+    <link rel="icon" href="../img/chair-director.png">
+
+</head>
+<body>
+    <div class="wrapper">
+        <div class="logo">
+            <div class="container">
+                <p><i class="ti ti-chair-director"></i> Film<span>Fetch.</span></p>
+            </div>
+        </div>
+        
+        <div class="container history-page">
+            <div class="history-header">
+                <a href="../main/index.html" class="home-link"> <!-- Knop terug naar de hoofdpagina-->
+                    <i class="ti ti-arrow-left"></i>
+                    Back to Search
+                </a>
+                <button class="clear-button" onclick="clearHistory()"> <!-- Verwijder geschiendenis knop-->
+                    <i class="ti ti-trash"></i>
+                    Clear History
+                </button>
+            </div>
+            
+            <div id="historyContainer" class="history-grid">
+                <!-- Alle recente zoekopdrachten worden hier dan ingezet. -->
+            </div>
+        </div>
+    </div>
+    <!-- de zoekgescheidenis box links onder -->
+    <!-- <div class="search-history">
+        <div class="notiglow"></div>
+        <div class="notiborderglow"></div>
+        <div class="notititle"></div>
+        <div class="notibody"></div>
+      </div> -->
+    
+    <script>
+        // Load and display search history
+        function loadHistory() {
+            const historyContainer = document.getElementById('historyContainer');
+            const savedHistory = sessionStorage.getItem('filmFetchDetailedHistory');
+            
+            if (savedHistory) {
+                const history = JSON.parse(savedHistory);
+                
+                if (history.length === 0) {
+                    historyContainer.innerHTML = `
+                        <div class="no-history">
+                            <i class="ti ti-history" style="font-size: 2rem; margin-bottom: 1rem;"></i>
+                            <p>No search history yet</p>
+                        </div>
+                    `;
+                    return;
+                }
+                
+                historyContainer.innerHTML = history.map(item => `
+                    <div class="history-card" onclick="window.location.href='../main/index.html?search=${encodeURIComponent(item.term)}'">
+                        <div>
+                            <i class="ti ti-search"></i>
+                            <span>${item.term}</span>
+                        </div>
+                        <div class="timestamp">${new Date(item.timestamp).toLocaleString()}</div>
+                    </div>
+                `).join('');
+            } else {
+                historyContainer.innerHTML = `
+                    <div class="no-history">
+                        <i class="ti ti-history" style="font-size: 2rem; margin-bottom: 1rem;"></i>
+                        <p>No search history yet</p>
+                    </div>
+                `;
+            }
+        }
+        
+        // Clear all history
+        function clearHistory() {
+            if (confirm('Are you sure you want to clear all search history?')) {
+                sessionStorage.removeItem('filmFetchDetailedHistory');
+                sessionStorage.removeItem('filmFetchHistory');
+                loadHistory();
+            }
+        }
+        
+        // Load history when page loads
+        window.addEventListener('load', loadHistory);
+    </script>
+</body>
+</html>
