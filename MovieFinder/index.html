@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MovieMentor</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css" />
+</head>
+<body>
+    <div class="glass-container">
+        <header>
+            <a href="index.html" class="logo-link"> <!-- logo gestolen van gpt-->
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 100" class="logo">
+                    <defs>
+                        <linearGradient id="buttonGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="10%" style="stop-color:#ffdb3b">
+                                <animate attributeName="stop-color" 
+                                    values="#ffdb3b;#fe53bb;#8f51ea;#0044ff;#ffdb3b" 
+                                    dur="5s" repeatCount="indefinite"/>
+                            </stop>
+                            <stop offset="45%" style="stop-color:#fe53bb">
+                                <animate attributeName="stop-color" 
+                                    values="#fe53bb;#8f51ea;#0044ff;#ffdb3b;#fe53bb" 
+                                    dur="5s" repeatCount="indefinite"/>
+                            </stop>
+                            <stop offset="67%" style="stop-color:#8f51ea">
+                                <animate attributeName="stop-color" 
+                                    values="#8f51ea;#0044ff;#ffdb3b;#fe53bb;#8f51ea" 
+                                    dur="5s" repeatCount="indefinite"/>
+                            </stop>
+                            <stop offset="87%" style="stop-color:#0044ff">
+                                <animate attributeName="stop-color" 
+                                    values="#0044ff;#ffdb3b;#fe53bb;#8f51ea;#0044ff" 
+                                    dur="5s" repeatCount="indefinite"/>
+                            </stop>
+                        </linearGradient>
+                    </defs>
+                    
+                    <!-- Film reel circles -->
+                    <circle cx="40" cy="50" r="30" fill="url(#buttonGradient)"/>
+                    <circle cx="40" cy="50" r="25" fill="#212121"/>
+                    <circle cx="40" cy="50" r="12" fill="url(#buttonGradient)"/>
+                    
+                    <!-- Small circles around the film reel -->
+                    <circle cx="40" cy="20" r="5" fill="url(#buttonGradient)"/>
+                    <circle cx="40" cy="80" r="5" fill="url(#buttonGradient)"/>
+                    <circle cx="10" cy="50" r="5" fill="url(#buttonGradient)"/>
+                    <circle cx="70" cy="50" r="5" fill="url(#buttonGradient)"/>
+                    
+                    <!-- Text -->
+                    <text x="100" y="65" font-family="Arial" font-weight="bold" font-size="40" fill="#FFFFFF">
+                        Movie<tspan fill="url(#buttonGradient)">Mentor</tspan>
+                    </text>
+                </svg>
+            </a>
+                <button class="history-btn" onclick="window.location.href='history.html'">
+                    <strong><i class="ti ti-history" style="margin-right: 5px;"></i> Search History</strong>
+                    <div id="container-stars">
+                        <div id="stars"></div>
+                    </div>
+                    <div id="glow">
+                        <div class="circle"></div>
+                        <div class="circle"></div>
+                    </div>
+                </button>
+                <button class="history-btn" onclick="window.location.href='../index.html'">
+                    <strong><i class="ti ti-arrow-left-dashed" style="margin-right: 5px;"></i> Back to Portfolio</strong>
+                    <div id="container-stars">
+                        <div id="stars"></div>
+                    </div>
+                    <div id="glow">
+                        <div class="circle"></div>
+                        <div class="circle"></div>
+                    </div>
+                </button>
+        </header>
+        
+        <main>
+            <div class="search-container">
+                <input type="text" id="searchInput" placeholder="Search for a movie...">
+                <button id="searchBtn"><i class="ti ti-search" style="margin-right: 5px;"></i> Search</button>
+            </div>
+
+            <div id="movieDetails" class="movie-details">
+                <!-- hier komen de film details -->
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

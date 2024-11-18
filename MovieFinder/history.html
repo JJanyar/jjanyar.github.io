@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search History - MovieMentor</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="history.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css" />
+</head>
+<body>
+    <div class="glass-container">
+        <header>
+            <a href="index.html" class="logo-link">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 100" class="logo">
+                    <!-- Film reel circles -->
+                    <circle cx="40" cy="50" r="30" fill="#FFFFFF"/>
+                    <circle cx="40" cy="50" r="25" fill="#E2E8F0"/>
+                    <circle cx="40" cy="50" r="12" fill="#FFFFFF"/>
+                    
+                    <!-- Small circles around the film reel -->
+                    <circle cx="40" cy="20" r="5" fill="#FFFFFF"/>
+                    <circle cx="40" cy="80" r="5" fill="#FFFFFF"/>
+                    <circle cx="10" cy="50" r="5" fill="#FFFFFF"/>
+                    <circle cx="70" cy="50" r="5" fill="#FFFFFF"/>
+                    
+                    <!-- Text -->
+                    <text x="100" y="65" font-family="Arial" font-weight="bold" font-size="40" fill="#FFFFFF">
+                        Movie<tspan fill="url(#buttonGradient)">Mentor</tspan>
+                    </text>
+                </svg>
+            </a>
+            <nav>
+                <button class="history-btn" onclick="window.location.href='index.html'">
+                    <strong><i class="ti ti-arrow-left-dashed" style="margin-right: 5px;"></i> Back to Search</strong>
+                    <div id="container-stars">
+                        <div id="stars"></div>
+                    </div>
+                    <div id="glow">
+                        <div class="circle"></div>
+                        <div class="circle"></div>
+                    </div>
+                </button>
+                <button class="history-btn" onclick="clearHistory()">
+                    <strong><i class="ti ti-trash" style="margin-right: 5px;"></i> Clear History</strong>
+                    <div id="container-stars-clear">
+                        <div id="stars-clear"></div>
+                    </div>
+                    <div id="glow-clear">
+                        <div class="circle"></div>
+                        <div class="circle"></div>
+                    </div>
+                </button>
+            </nav>
+        </header>
+        
+        <main>
+            <div id="historyList" class="history-list">
+                <!-- Search history will be displayed here -->
+            </div>
+        </main>
+    </div>
+
+    <script src="history.js"></script>
+</body>
+</html> 

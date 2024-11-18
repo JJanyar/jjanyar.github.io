@@ -12,7 +12,12 @@
 
 </head>
 <body>
-    <!-- Loading Screen -->
+    <!-- startengine sound op het begin -->
+    <audio id="engineSound" preload="auto">
+        <source src="sound/carengine.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- start of the loading screen -->
     <div class="loading-screen">
         <label class="container">
             <input type="checkbox" id="engineButton">
@@ -24,15 +29,19 @@
             </div>
         </label>
     </div>
+    <!-- end of the loading screen -->
 
-    <!-- Main Content -->
+    <!-- homepage -->
     <div class="main-content hidden">
         <div class="wrapper">
+            <!-- start header -->
             <div class="header">
+                <div class="buttonheartbeat">
                 <div class="profile-picture">
-                    <img src="img/profile-icon-design-free-vector.jpg" alt="">
+                    <img src="img/stock-profile-picture.jpg" alt="">
                 </div>
-                <h1 class="name">Janyar Muslem</h1>
+                </div>
+                <h1 class="name">Janyar</h1>
                 <p class="frontend">Frontend Developer</p>
                 <!-- Mijn links -->
                 <div class="social-links">
@@ -40,29 +49,31 @@
                     <span><a href="mailto:janyarmuslem@email.com"><i class="ti ti-mail"></i></a></span>
                 </div>
             </div>
+            <!-- End of header -->
+             <!-- start current projects -->
+              <h3 class="current-projects">&#128221 Current projects</h3>
+            <hr>
+            <h4 class="projects"><a href="../MovieMentor/index.html">MovieMentor</a></h4>
+            <p style="color: #ffffffb7;">A website where you are able to search for a movie and view it's details.</p>
+        </div>
+    </div>
+    <!-- Start of the profile div -->
+    <div class="profile-info hidden">
+        <div class="profile-info-box">
+            <div class="profile-picture">
+                <img src="img/stock-profile-picture.jpg" alt="">
+            </div>
+            <div class="profile-details">
+                <h1 class="name">Janyar Muslem</h1>
+                <p class="location">&#128205 Amsterdam</p>
+                <p class="seperator">│</p>
+                <p class="age">18 years old</p>
+                <blockquote class="quote"><a href="https://genius.com/Famke-louise-vroom-lyrics">"Misschien koop ik wel een Bentley <br>
+                    Misschien koop ik wel een Honda" <br> - Famke Louise</a></blockquote>
+            </div>
         </div>
     </div>
 
-    <script>
-        // Reset checkbox state on page load
-        window.onload = function() {
-            document.getElementById('engineButton').checked = false;
-        };
-
-        document.querySelector('.container input').addEventListener('change', function() {
-            if (this.checked) {
-                // Add push animation class
-                document.querySelector('.circle').classList.add('push-animation');
-                
-                setTimeout(() => {
-                    document.querySelector('.loading-screen').style.opacity = '0';
-                    document.querySelector('.main-content').classList.remove('hidden');
-                    setTimeout(() => {
-                        document.querySelector('.loading-screen').style.display = 'none';
-                    }, 1000);
-                }, 500);
-            }
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
