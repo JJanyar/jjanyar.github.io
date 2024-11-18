@@ -3,56 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Interactive Link Grid</title>
+    <title>Janyar Muslem</title>
+    
+    <!-- Style -->
     <link rel="stylesheet" href="styles.css">
+    <!-- Tabler Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css" />
+
 </head>
 <body>
-    <div class="container">
-        <div class="grid">
-            <!-- Uiverse.io -->
-            <div class="uiverse">
-                <span class="tooltip">uiverse.io</span>
-                <span>
-                    <a href="https://uiverse.io/elements" target="_blank" class="uiverse">Animated elements</a>
-                </span>
+    <!-- Loading Screen -->
+    <div class="loading-screen">
+        <label class="container">
+            <input type="checkbox" id="engineButton">
+            <div class="circle">
+                <div class="led"></div>
+                <span class="engine-text">ENGINE</span>
+                <span class="start-text">START</span>
+                <span class="stop-text">STOP</span>
             </div>
-            <!-- cssloader.github.io -->
-            <div class="uiverse">
-                <span class="tooltip">cssloader.github.io</span>
-                <span>
-                    <a href="https://cssloaders.github.io/" target="_blank" class="uiverse">Animated loaders</a>
-                </span>
-            </div>
-            <!-- cssbuttons.app -->
-            <div class="uiverse">
-                <span class="tooltip">cssbuttons.app</span>
-                <span>
-                    <a href="https://cssbuttons.app/" target="_blank" class="uiverse">Animated buttons</a>
-                </span>
-            </div>
-            <!-- cssgradient.io -->
-            <div class="uiverse">
-                <span class="tooltip">cssgradient.io</span>
-                <span>
-                    <a href="https://cssgradient.io/" target="_blank" class="uiverse">CSS gradients</a>
-                </span>
-            </div>
-            <!-- cssbuttons.io -->
-            <div class="uiverse">
-                <span class="tooltip">cssbuttons.io</span>
-                <span>
-                    <a href="https://cssbuttons.io/" target="_blank" class="uiverse">Animated buttons 2</a>
-                </span>
-            </div>
-            <!-- neumorphism.io -->
-            <div class="uiverse">
-                <span class="tooltip">neumorphis.io</span>
-                <span>
-                    <a href="https://neumorphism.io/" target="_blank" class="uiverse">Soft UI Boxes</a>
-                </span>
+        </label>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content hidden">
+        <div class="wrapper">
+            <div class="header">
+                <div class="profile-picture">
+                    <img src="img/profile-icon-design-free-vector.jpg" alt="">
+                </div>
+                <h1 class="name">Janyar Muslem</h1>
+                <p class="frontend">Frontend Developer</p>
+                <!-- Mijn links -->
+                <div class="social-links">
+                    <span><a href="https://github.com/JJanyar"><i class="ti ti-brand-github"></i></a></span>
+                    <span><a href="mailto:janyarmuslem@email.com"><i class="ti ti-mail"></i></a></span>
+                </div>
             </div>
         </div>
     </div>
-    <script src="script.js"></script>
+
+    <script>
+        // Reset checkbox state on page load
+        window.onload = function() {
+            document.getElementById('engineButton').checked = false;
+        };
+
+        document.querySelector('.container input').addEventListener('change', function() {
+            if (this.checked) {
+                // Add push animation class
+                document.querySelector('.circle').classList.add('push-animation');
+                
+                setTimeout(() => {
+                    document.querySelector('.loading-screen').style.opacity = '0';
+                    document.querySelector('.main-content').classList.remove('hidden');
+                    setTimeout(() => {
+                        document.querySelector('.loading-screen').style.display = 'none';
+                    }, 1000);
+                }, 500);
+            }
+        });
+    </script>
 </body>
 </html>
