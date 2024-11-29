@@ -300,7 +300,6 @@ html{
   animation: fillTurkish 1.5s ease-out forwards;
 }
 
-/* Individual animations for each language */
 @keyframes fillDutch {
   from { width: 0; }
   to { width: 95%; }
@@ -313,12 +312,12 @@ html{
 
 @keyframes fillKurdish {
   from { width: 0; }
-  to { width: 60%; }
+  to { width: 50%; }
 }
 
 @keyframes fillArabic {
   from { width: 0; }
-  to { width: 20%; }
+  to { width: 15%; }
 }
 
 @keyframes fillTurkish {
@@ -541,18 +540,51 @@ hr{
 
 @media (max-width: 768px) {
   .header {
-    grid-template-columns: auto 1fr;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto;
     height: auto;
+    text-align: center;
+    gap: 10px;
+    padding: 20px;
   }
   
-  .social-links {
-    grid-column: 2;
-    grid-row: 3;
+  .profile-picture {
+    grid-column: 1;
+    grid-row: 1;
+    justify-self: center;
+  }
+  
+  .name {
+    grid-column: 1;
+    grid-row: 2;
+    position: static;
     margin-top: 10px;
   }
   
+  .frontend {
+    grid-column: 1;
+    grid-row: 3;
+    position: static;
+    margin-top: -10px;
+  }
+  
+  .social-links {
+    grid-column: 1;
+    grid-row: 4;
+    position: static;
+    justify-content: center;
+    margin-top: 10px;
+  }
+
   .skills {
     grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .skills p {
+    width: auto;
+    text-align: center;
+    padding: 8px;
   }
 }
 
@@ -685,25 +717,20 @@ hr{
 @media (max-width: 480px) {
   .header {
     padding: 15px;
-    height: auto;
-    min-height: 120px;
+    min-height: auto;
   }
 
-  .social-links {
-    margin-top: 15px;
+  .profile-picture img {
+    width: 70px;
+    height: 70px;
   }
 
-  .menubar ul li a {
-    font-size: 1em;
+  .name {
+    font-size: 1.5em;
   }
 
-  .skills {
-    grid-template-columns: 1fr;
-  }
-
-  .profile-info-box {
-    padding: 15px;
-    margin: 15px;
+  .frontend {
+    font-size: 0.9em;
   }
 }
 
@@ -716,4 +743,11 @@ hr{
         opacity: 1;
         transform: translateY(0);
     }
+}
+
+/* Keep single column only for very small devices */
+@media (max-width: 350px) {
+  .skills {
+    grid-template-columns: 1fr;
+  }
 }
