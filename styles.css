@@ -608,7 +608,14 @@ hr{
   z-index: 998;
 }
 
-@media (min-width: 1001px) {
+/* Base menubar styles */
+.menubar {
+  position: fixed;
+  z-index: 998;
+}
+
+/* Desktop layout */
+@media (min-width: 901px) {
   .menubar {
     left: 20px;
     top: 50%;
@@ -633,6 +640,149 @@ hr{
     margin-left: auto;
     margin-right: auto;
     padding: 0 20px;
+  }
+}
+
+/* Tablet layout */
+@media (max-width: 900px) {
+  .menubar {
+    top: 0;
+    width: 100%;
+    background-color: var(--dark-grey);
+    padding: 10px 0;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  }
+  
+  .menubar ul {
+    flex-direction: row;
+    justify-content: center;
+    gap: 20px;
+  }
+
+  .menubar ul li a {
+    font-size: 1.1em;
+  }
+  
+  .wrapper {
+    margin-top: 60px;
+    padding: 0 20px;
+  }
+
+  .p-card {
+    width: 100%;
+    max-width: 590px;
+    height: auto;
+    min-height: 485px;
+  }
+  
+  .p-card img {
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+/* Mobile layout */
+@media (max-width: 600px) {
+  .menubar ul {
+    gap: 15px;
+  }
+
+  .menubar ul li a {
+    font-size: 1em;
+  }
+  
+  .wrapper {
+    padding: 0 15px;
+  }
+
+  .header {
+    padding: 15px;
+    min-height: auto;
+    text-align: center;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto;
+    height: auto;
+    gap: 10px;
+  }
+
+  .profile-picture {
+    grid-column: 1;
+    grid-row: 1;
+    justify-self: center;
+  }
+  
+  .name {
+    grid-column: 1;
+    grid-row: 2;
+    position: static;
+    margin-top: 10px;
+    font-size: 1.4em;
+  }
+  
+  .frontend {
+    grid-column: 1;
+    grid-row: 3;
+    position: static;
+    margin-top: -10px;
+    font-size: 0.9em;
+  }
+  
+  .social-links {
+    grid-column: 1;
+    grid-row: 4;
+    position: static;
+    justify-content: center;
+    margin-top: 10px;
+  }
+
+  .profile-picture img {
+    width: 65px;
+    height: 65px;
+  }
+
+  .skills {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .p-card {
+    min-height: auto;
+  }
+
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Extra small devices */
+@media (max-width: 400px) {
+  .menubar ul {
+    gap: 10px;
+  }
+
+  .menubar ul li a {
+    font-size: 0.9em;
+  }
+
+  .profile-picture img {
+    width: 60px;
+    height: 60px;
+  }
+
+  .name {
+    font-size: 1.3em;
+  }
+
+  .skills p {
+    font-size: 0.9em;
+    padding: 6px;
+  }
+}
+
+/* Very small devices */
+@media (max-width: 350px) {
+  .skills {
+    grid-template-columns: 1fr;
   }
 }
 
