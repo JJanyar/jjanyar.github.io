@@ -43,7 +43,8 @@ const searchMovie = async () => {
     if (!searchTerm) return;
 
     try {
-        const response = await fetch(`https://www.omdbapi.com/?s=${searchTerm}&apikey=${config.OMDB_API_KEY}`);
+        // const response = await fetch(`https://www.omdbapi.com/?s=${searchTerm}&apikey=${config.OMDB_API_KEY}`);
+        const response = await fetch(`https://www.omdbapi.com/?s=${searchTerm}&apikey='fc1fef96'`);
         const data = await response.json();
 
         if (data.Response === 'True') {
@@ -63,7 +64,8 @@ const loadRandomMovies = async (page = 1) => {
     try {
         // Get a random search term from the popular movies array
         const randomTerm = POPULAR_MOVIES[Math.floor(Math.random() * POPULAR_MOVIES.length)];
-        const response = await fetch(`https://www.omdbapi.com/?s=${randomTerm}&page=${page}&apikey=${config.OMDB_API_KEY}`);
+        // const response = await fetch(`https://www.omdbapi.com/?s=${randomTerm}&page=${page}&apikey=${config.OMDB_API_KEY}`);
+        const response = await fetch(`https://www.omdbapi.com/?s=${randomTerm}&page=${page}&apikey='fc1fef96'`);
         const data = await response.json();
 
         if (data.Response === 'True') {
@@ -132,7 +134,8 @@ const loadMore = () => {
 // Modify showMovieDetails to add the detailed-view class
 const showMovieDetails = async (imdbID) => {
     try {
-        const response = await fetch(`https://www.omdbapi.com/?i=${imdbID}&apikey=${config.OMDB_API_KEY}`);
+        // const response = await fetch(`https://www.omdbapi.com/?i=${imdbID}&apikey=${config.OMDB_API_KEY}`);
+        const response = await fetch("https://www.omdbapi.com/?i=${imdbID}&apikey='fc1fef96'");
         const movie = await response.json();
 
         if (movie.Response === 'True') {
