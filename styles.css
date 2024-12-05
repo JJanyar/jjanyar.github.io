@@ -245,7 +245,13 @@ html{
   gap: 15px;
   margin-top: 15px;
 }
-
+.novacollege{
+  transform: translateY(0px);
+  transition: all 0.3s ease;
+}
+.novacollege:hover {
+  transform: translateY(-5px);
+}
 .language-item {
   display: grid;
   grid-template-columns: 120px 1fr;
