@@ -76,7 +76,7 @@ html{
   margin-inline: auto;
   padding: 10px;
   background-color: var(--dark-grey);
-  border: 2px solid var(--light-grey);
+  border: 1px solid var(--light-grey);
   border-radius: 7.5px;
   display: grid;
   grid-template-columns: auto 1fr auto;
@@ -508,6 +508,18 @@ hr{
 .footer-text {
   color: #e5e4e2;
   font-size: 0.9em;
+}
+.download-cv{
+  padding: 10px;
+  margin-top: -10px;
+  border: 1px solid var(--light-grey);
+  border-radius: 5px;
+  transform: translateY(0px);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+.download-cv:hover{
+  transform: translateY(-5px);
 }
 
 /* Animations */
