@@ -1,25 +1,5 @@
-// Functie om afbeeldingen met fallback af te handelen
-function setupProfilePictureFallback() {
-    const images = document.querySelectorAll('img[data-fallback]');
-    
-    images.forEach(img => {
-        // Luister naar error event wanneer afbeelding niet kan laden
-        img.addEventListener('error', function() {
-            const fallbackSrc = this.getAttribute('data-fallback');
-            if (fallbackSrc && this.src !== fallbackSrc) {
-                // Vervang met fallback afbeelding
-                this.src = fallbackSrc;
-                console.log(`Fallback geladen voor ${fallbackSrc}`);
-            }
-        });
-    });
-}
-
 // wachten op het laden
 document.addEventListener('DOMContentLoaded', function() {
-    // Setup profiel foto fallback functie
-    setupProfilePictureFallback();
-    
     // Selecteer de hoofdcontent element
     const mainContent = document.querySelector('.main-content');
     
