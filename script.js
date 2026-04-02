@@ -12,6 +12,28 @@ document.addEventListener('DOMContentLoaded', function() {
         mainContent.classList.remove('hidden');
     }, 100);
 
+    // Contact cards - maak het hele blokje clickable
+    const contactCards = document.querySelectorAll('.contact-card');
+    contactCards.forEach(card => {
+        // Voeg cursor pointer toe voor UX
+        card.style.cursor = 'pointer';
+        
+        // Voeg click event toe aan hele card
+        card.addEventListener('click', function(e) {
+            // Als er een link in de card is, voer deze uit
+            const link = this.querySelector('a');
+            if (link) {
+                // Check of het een externe link is
+                if (link.target === '_blank') {
+                    window.open(link.href, '_blank');
+                } else {
+                    // Interne link (mailto of tel)
+                    window.location.href = link.href;
+                }
+            }
+        });
+    });
+
     // Projecten navigatie slider
     const slider = document.querySelector('.projects-slider');
     if (slider) {
