@@ -1,0 +1,71 @@
+---
+import { profile } from '../data/site';
+
+const links = [
+  { label: 'Gravatar', icon: 'ti-brand-wordpress', href: 'https://janyar.info' },
+  { label: 'GitHub', icon: 'ti-brand-github', href: 'https://github.com/JJanyar' },
+  { label: 'LinkedIn', icon: 'ti-brand-linkedin', href: 'https://linkedin.com/' },
+  { label: 'Email', icon: 'ti-mail', href: `mailto:${profile.email}` },
+  { label: 'Download CV', icon: 'ti-file-cv', href: '/CV_Janyar.pdf' },
+];
+---
+
+<footer>
+  <div class="links">
+    {
+      links.map((l) => (
+        <a
+          href={l.href}
+          title={l.label}
+          aria-label={l.label}
+          target={l.href.startsWith('mailto') ? undefined : '_blank'}
+          rel="noopener"
+        >
+          <i class={`ti ${l.icon}`} />
+        </a>
+      ))
+    }
+    <a href="#top" title="Back to top" aria-label="Back to top"><i class="ti ti-arrow-up"></i></a>
+  </div>
+  <p>© {new Date().getFullYear()} Janyar Muslem • Built with <span class="heart">❤️</span></p>
+</footer>
+
+<style>
+  footer {
+    margin-top: 80px;
+    padding: 24px 16px;
+    text-align: center;
+    border-top: 1px solid var(--border-strong);
+  }
+
+  .links {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 14px;
+  }
+
+  a {
+    color: var(--text-muted);
+    font-size: 1.5rem;
+    text-decoration: none;
+    transition:
+      color 0.3s,
+      transform 0.4s var(--ease-out);
+  }
+
+  a:hover {
+    color: var(--text-soft);
+    transform: translateY(-3px);
+  }
+
+  p {
+    margin: 0;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+  }
+
+  .heart {
+    color: #ff6b9d;
+  }
+</style>

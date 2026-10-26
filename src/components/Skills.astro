@@ -1,0 +1,99 @@
+---
+import { skillGroups } from '../data/site';
+---
+
+<div class="skills" data-reveal>
+  {
+    skillGroups.map((group) => (
+      <div class="group">
+        <span class="label">{group.label}</span>
+        <ul>
+          {group.skills.map((skill) => (
+            <li>
+              <i class={`ti ${skill.icon}`} aria-hidden="true" />
+              {skill.name}
+            </li>
+          ))}
+        </ul>
+      </div>
+    ))
+  }
+</div>
+
+<style>
+  .skills {
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--surface);
+  }
+
+  .group {
+    display: grid;
+    grid-template-columns: 96px 1fr;
+    align-items: center;
+    gap: 16px;
+    padding: 16px 20px;
+  }
+
+  .group + .group {
+    border-top: 1px solid var(--border);
+  }
+
+  .label {
+    color: var(--text-faint);
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  li {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 7px 14px 7px 11px;
+    border: 1px solid var(--border-strong);
+    border-radius: 999px;
+    color: var(--text-soft);
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition:
+      transform 0.4s var(--ease-out),
+      border-color 0.3s,
+      background 0.3s,
+      color 0.3s;
+  }
+
+  li i {
+    font-size: 1.15rem;
+    color: var(--text-muted);
+    transition: color 0.3s;
+  }
+
+  li:hover {
+    transform: translateY(-2px);
+    border-color: #555;
+    background: var(--surface-hover);
+    color: var(--text);
+  }
+
+  li:hover i {
+    color: var(--text);
+  }
+
+  @media (max-width: 480px) {
+    .group {
+      grid-template-columns: 1fr;
+      gap: 10px;
+    }
+  }
+</style>

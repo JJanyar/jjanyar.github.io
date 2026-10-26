@@ -1,2 +1,7 @@
 # API Keys
-MF/config.js 
+MF/config.js
+
+# Build
+node_modules/
+dist/
+.astro/

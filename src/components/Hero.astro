@@ -1,0 +1,294 @@
+---
+import { profile, socials } from '../data/site';
+---
+
+<header class="header">
+  <button class="avatar" type="button" aria-label="Show more about Janyar" aria-haspopup="dialog">
+    <img src={profile.photo} alt="Janyar's profile picture" width="80" height="80" />
+  </button>
+  <div class="intro">
+    <h1>{profile.shortName}</h1>
+    <p>{profile.role}</p>
+  </div>
+  <div class="social-links">
+    {
+      socials.map((s) => (
+        <a
+          href={s.href}
+          aria-label={s.label}
+          title={s.label}
+          target={s.href.startsWith('http') || s.href.endsWith('.pdf') ? '_blank' : undefined}
+          rel="noopener"
+        >
+          <i class={`ti ${s.icon}`} />
+        </a>
+      ))
+    }
+  </div>
+</header>
+
+<dialog class="profile-modal">
+  <div class="modal-box">
+    <img src={profile.photo} alt="Janyar's profile picture" width="180" height="180" />
+    <div class="details">
+      <h2>{profile.name}</h2>
+      <p class="meta">
+        <span><i class="ti ti-map-pin"></i> {profile.location}</span>
+        <span class="sep">│</span>
+        <span>{profile.age} years old</span>
+      </p>
+      <blockquote>{profile.quote}</blockquote>
+    </div>
+    <button class="close" type="button" aria-label="Close"><i class="ti ti-x"></i></button>
+  </div>
+</dialog>
+
+<style>
+  .header {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 20px;
+    padding: 16px 20px;
+    border: 1px solid var(--border-strong);
+    border-radius: 10px;
+    animation: rise 0.9s var(--ease-out) 0.1s both;
+  }
+
+  @keyframes rise {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+  }
+
+  /* Ripple around the photo */
+  .avatar {
+    position: relative;
+    padding: 0;
+    border: none;
+    background: none;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+
+  .avatar::before,
+  .avatar::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    border: 1.5px solid rgba(255, 255, 255, 0.4);
+    opacity: 0;
+    pointer-events: none;
+    animation: ripple 4s linear infinite;
+  }
+
+  .avatar::after {
+    animation-delay: 2s;
+  }
+
+  @keyframes ripple {
+    0% {
+      transform: scale(1);
+      opacity: 0;
+    }
+    10% {
+      opacity: 0.6;
+    }
+    100% {
+      transform: scale(1.6);
+      opacity: 0;
+    }
+  }
+
+  .avatar img {
+    position: relative;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    transition: transform 0.5s var(--ease-out);
+  }
+
+  .avatar:hover img {
+    transform: scale(1.05);
+  }
+
+  h1 {
+    margin: 0;
+    font-size: 2rem;
+    line-height: 1.2;
+  }
+
+  .intro p {
+    margin: 2px 0 0;
+    color: var(--text-soft);
+  }
+
+  .social-links {
+    display: flex;
+    gap: 10px;
+  }
+
+  .social-links a {
+    color: var(--text);
+    font-size: 28px;
+    line-height: 1;
+    text-decoration: none;
+    transition:
+      transform 0.4s var(--ease-out),
+      opacity 0.3s;
+    opacity: 0.85;
+  }
+
+  .social-links a:hover {
+    transform: translateY(-4px);
+    opacity: 1;
+  }
+
+  /* Profile modal */
+  .profile-modal {
+    padding: 0;
+    border: none;
+    background: none;
+    color: var(--text);
+    max-width: min(600px, calc(100vw - 32px));
+  }
+
+  .profile-modal::backdrop {
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px);
+  }
+
+  .profile-modal[open] {
+    animation: pop 0.45s var(--ease-out);
+  }
+
+  .profile-modal[open]::backdrop {
+    animation: fade 0.45s var(--ease-out);
+  }
+
+  @keyframes pop {
+    from {
+      opacity: 0;
+      transform: scale(0.94) translateY(10px);
+    }
+  }
+
+  @keyframes fade {
+    from {
+      opacity: 0;
+    }
+  }
+
+  .modal-box {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    padding: 24px;
+    background: var(--bg);
+    border: 1px solid var(--border-strong);
+    border-radius: 14px;
+  }
+
+  .modal-box > img {
+    width: 180px;
+    height: 180px;
+    border-radius: 12px;
+    object-fit: cover;
+    flex-shrink: 0;
+  }
+
+  .details h2 {
+    margin: 0 0 6px;
+    font-size: 1.6rem;
+  }
+
+  .meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 0 0 14px;
+    color: var(--text-soft);
+  }
+
+  .sep {
+    color: var(--text-faint);
+  }
+
+  blockquote {
+    margin: 0;
+    padding-left: 14px;
+    border-left: 2px solid var(--border-strong);
+    font-style: italic;
+    color: var(--text-muted);
+  }
+
+  .close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 32px;
+    height: 32px;
+    border: none;
+    border-radius: 8px;
+    background: none;
+    color: var(--text-muted);
+    font-size: 18px;
+    cursor: pointer;
+    transition:
+      background 0.2s,
+      color 0.2s;
+  }
+
+  .close:hover {
+    background: var(--surface-hover);
+    color: var(--text);
+  }
+
+  @media (max-width: 640px) {
+    .header {
+      grid-template-columns: 1fr;
+      justify-items: center;
+      text-align: center;
+      gap: 12px;
+      padding: 20px;
+    }
+
+    h1 {
+      font-size: 1.5rem;
+    }
+
+    .modal-box {
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .meta {
+      justify-content: center;
+    }
+
+    blockquote {
+      border-left: none;
+      padding-left: 0;
+    }
+  }
+</style>
+
+<script>
+  const modal = document.querySelector<HTMLDialogElement>('.profile-modal')!;
+  document.querySelector('.avatar')!.addEventListener('click', () => modal.showModal());
+  modal.querySelector('.close')!.addEventListener('click', () => modal.close());
+  // Close when clicking the backdrop
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) modal.close();
+  });
+  // Fall back to the placeholder photo if the main one fails to load
+  document.querySelectorAll<HTMLImageElement>('.avatar img, .modal-box > img').forEach((img) => {
+    const fallback = () => (img.src = '/img/profilephoto_alt.png');
+    if (img.complete && img.naturalWidth === 0) fallback();
+    else img.addEventListener('error', fallback, { once: true });
+  });
+</script>

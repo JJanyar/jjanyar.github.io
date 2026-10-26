@@ -1,0 +1,83 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import Hero from '../components/Hero.astro';
+import Section from '../components/Section.astro';
+import Skills from '../components/Skills.astro';
+import Experience from '../components/Experience.astro';
+import Projects from '../components/Projects.astro';
+import Contact from '../components/Contact.astro';
+import Footer from '../components/Footer.astro';
+import { experience } from '../data/site';
+---
+
+<Layout>
+  <Nav />
+  <main class="wrapper" id="top">
+    <Hero />
+
+    <Section id="about" title="About me">
+      <div data-reveal>
+        <h3 class="sub">Work</h3>
+        <p>
+          Since May 2026 I work as an <em>IT Developer</em> at
+          <a href="https://holysmartphone.nl" target="_blank" rel="noopener">Holysmartphone</a>, where I build and
+          maintain the company website
+          <a href="https://holysmartphone.nl" target="_blank" rel="noopener">holysmartphone.nl</a>. Next to that I work
+          on <a href="https://tripframe.vercel.app" target="_blank" rel="noopener">Tripframe</a>, a dashcam footage viewer
+          that runs entirely in the browser.
+        </p>
+        <p>I love to design and code with the help of AI models.</p>
+      </div>
+      <div data-reveal>
+        <h3 class="sub">Education</h3>
+        <p>
+          I am studying <em>Software Development</em> at
+          <a href="https://www.novacollege.nl/" target="_blank" rel="noopener">ROC Nova College</a> in Beverwijk. I plan
+          to complete the course next year and pursue a full-time career as a Software Developer/Engineer.
+        </p>
+      </div>
+      <h3 class="sub" data-reveal>Skills</h3>
+      <Skills />
+    </Section>
+
+    <Section id="experience" title="Education & Work Experience">
+      <Experience companies={experience} />
+    </Section>
+
+    <Section id="projects" title="Projects">
+      <Projects />
+    </Section>
+
+    <Section id="contact" title="Contact Me">
+      <Contact />
+    </Section>
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  .wrapper {
+    max-width: 640px;
+    margin: 40px auto 0;
+    padding: 0 16px;
+    color: var(--text-soft);
+  }
+
+  :global(:where(.wrapper p a)) {
+    color: var(--text);
+    text-decoration-color: var(--border-strong);
+    text-underline-offset: 3px;
+    transition: text-decoration-color 0.3s;
+  }
+
+  :global(:where(.wrapper p a:hover)) {
+    text-decoration-color: var(--text);
+  }
+
+  @media (min-width: 1000px) {
+    .wrapper {
+      margin-top: 8vh;
+    }
+  }
+</style>

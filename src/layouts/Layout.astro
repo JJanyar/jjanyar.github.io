@@ -1,0 +1,77 @@
+---
+import '../styles/global.css';
+
+const title = 'Janyar Muslem';
+const description =
+  'Portfolio of Janyar Muslem, IT Developer at Holysmartphone. Work experience and web projects including holysmartphone.nl and Tripframe.';
+const ogImage = new URL('/img/profilephoto.jpeg', Astro.site).href;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Google tag (gtag.js) -->
+    <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-KYGVW65XLR"></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', 'G-KYGVW65XLR');
+    </script>
+    <script is:inline>
+      document.documentElement.classList.add('js');
+    </script>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="author" content="Janyar Muslem" />
+    <meta
+      name="keywords"
+      content="Software Developer, IT Developer, Janyar, Janyar Muslem, Holysmartphone, Tripframe, Javascript, HTML, CSS, Frontend Developer"
+    />
+    <meta property="og:title" content="Janyar Muslem - IT Developer" />
+    <meta property="og:description" content="Portfolio of Janyar Muslem, IT Developer at Holysmartphone." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={Astro.site} />
+    <meta property="og:image" content={ogImage} />
+    <meta name="theme-color" content="#09090b" />
+    <link rel="icon" href="/favicon.ico" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.31.0/dist/tabler-icons.min.css" />
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>
+
+<script>
+  // Fade sections in as they scroll into view.
+  const items = document.querySelectorAll('[data-reveal]');
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        const el = entry.target;
+        el.classList.add('is-visible');
+        observer.unobserve(el);
+        // Hand transitions back to the element's own hover styles once it has appeared.
+        const done = (e: Event) => {
+          if (e.target !== el) return;
+          el.removeAttribute('data-reveal');
+          el.classList.remove('is-visible');
+          el.removeEventListener('transitionend', done);
+        };
+        el.addEventListener('transitionend', done);
+      });
+    },
+    { rootMargin: '0px 0px -8% 0px', threshold: 0.1 },
+  );
+  items.forEach((el) => observer.observe(el));
+</script>

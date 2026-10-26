@@ -1,0 +1,173 @@
+---
+import type { Company } from '../data/site';
+import { formatDuration, formatRange } from '../lib/duration';
+
+interface Props {
+  companies: Company[];
+}
+
+const { companies } = Astro.props;
+
+// Total time at a company, from its first start to its last end (or now).
+function companySpan(company: Company) {
+  const starts = company.roles.map((r) => r.start).sort();
+  const current = company.roles.some((r) => !r.end);
+  const ends = company.roles.map((r) => r.end!).filter(Boolean).sort();
+  return { start: starts[0], end: current ? undefined : ends[ends.length - 1] };
+}
+---
+
+<div class="experience" data-reveal>
+  {
+    companies.map((company) => {
+      const grouped = company.roles.length > 1;
+      const span = companySpan(company);
+      return (
+        <article class="company">
+          <img class="logo" src={company.logo} alt="" width="40" height="40" loading="lazy" />
+          <div class="content">
+            {grouped ? (
+              <>
+                <h4>{company.name}</h4>
+                <p class="date" data-start={span.start} data-end={span.end} data-mode="duration">
+                  {formatDuration(span.start, span.end)}
+                </p>
+                <ol class="roles">
+                  {company.roles.map((role) => (
+                    <li>
+                      <h5>{role.title}</h5>
+                      <p class="date" data-start={role.start} data-end={role.end}>
+                        {formatRange(role.start, role.end)}
+                      </p>
+                      <p class="desc">{role.description}</p>
+                    </li>
+                  ))}
+                </ol>
+              </>
+            ) : (
+              company.roles.map((role) => (
+                <>
+                  <h4>{role.title}</h4>
+                  <p class="org">
+                    {company.name}
+                    {company.place && ` · ${company.place}`}
+                  </p>
+                  <p class="date" data-start={role.start} data-end={role.end}>
+                    {formatRange(role.start, role.end)}
+                  </p>
+                  <p class="desc">{role.description}</p>
+                </>
+              ))
+            )}
+          </div>
+        </article>
+      );
+    })
+  }
+</div>
+
+<style>
+  .experience {
+    padding: 0;
+  }
+
+  .company {
+    display: flex;
+    gap: 14px;
+    padding: 18px 0;
+  }
+
+  .company + .company {
+    border-top: 1px solid var(--border);
+  }
+
+  .logo {
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+    object-fit: contain;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    background: var(--surface-hover);
+    padding: 6px;
+  }
+
+  .content {
+    min-width: 0;
+    flex: 1;
+  }
+
+  h4,
+  h5 {
+    margin: 0;
+    font-size: 0.95rem;
+    font-weight: 600;
+    line-height: 1.4;
+  }
+
+  .org {
+    margin: 1px 0 0;
+    font-size: 0.875rem;
+    color: var(--text-soft);
+  }
+
+  .date {
+    margin: 1px 0 0;
+    font-size: 0.8rem;
+    color: var(--text-faint);
+  }
+
+  .desc {
+    margin: 8px 0 0;
+    font-size: 0.875rem;
+    color: var(--text-muted);
+  }
+
+  /* LinkedIn-style timeline for several roles at one company */
+  .roles {
+    list-style: none;
+    margin: 14px 0 0;
+    padding: 0;
+  }
+
+  .roles li {
+    position: relative;
+    padding: 0 0 18px 22px;
+  }
+
+  .roles li:last-child {
+    padding-bottom: 0;
+  }
+
+  .roles li::before {
+    content: '';
+    position: absolute;
+    left: 3px;
+    top: 7px;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: var(--text-faint);
+  }
+
+  .roles li:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    left: 7px;
+    top: 22px;
+    bottom: 2px;
+    width: 1px;
+    background: var(--border-strong);
+  }
+</style>
+
+<script>
+  import { formatDuration, formatRange } from '../lib/duration';
+
+  // Recalculate "Present" durations in the browser so they never go stale between deploys.
+  document.querySelectorAll<HTMLElement>('.experience .date[data-start]').forEach((el) => {
+    const { start, end, mode } = el.dataset;
+    if (!start || end) return;
+    el.textContent = mode === 'duration' ? formatDuration(start) : formatRange(start);
+  });
+</script>

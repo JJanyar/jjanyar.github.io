@@ -1,10 +1,13 @@
 {
   "name": "jjanyar.github.io",
-  "version": "1.0.0",
-  "description": "github pages website",
-  "main": "Gruntfile.js",
+  "version": "2.0.0",
+  "description": "Portfolio website of Janyar Muslem",
+  "type": "module",
+  "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
   },
   "repository": {
     "type": "git",
@@ -12,14 +15,10 @@
   },
   "author": "janyar",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/JJanyar/jjanyar.github.io/issues"
+  "engines": {
+    "node": ">=22.12.0"
   },
-  "homepage": "https://github.com/JJanyar/jjanyar.github.io#readme",
-  "devDependencies": {
-    "grunt": "^1.6.1",
-    "grunt-contrib-less": "^3.0.0",
-    "grunt-contrib-watch": "^1.1.0",
-    "jit-grunt": "^0.10.0"
+  "dependencies": {
+    "astro": "6.4.8"
   }
 }
