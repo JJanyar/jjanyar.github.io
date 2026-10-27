@@ -1,4 +1,5 @@
 ---
+import Icon from './Icon.astro';
 import { contacts } from '../data/site';
 ---
 
@@ -14,7 +15,7 @@ import { contacts } from '../data/site';
         target={c.href.startsWith('http') ? '_blank' : undefined}
         rel="noopener"
       >
-        <i class={`ti ${c.icon}`} aria-hidden="true" />
+        <Icon name={c.icon} />
         <span class="label">{c.label}</span>
         <span class="value">{c.text}</span>
       </a>
@@ -57,7 +58,7 @@ import { contacts } from '../data/site';
     background: var(--surface-hover);
   }
 
-  .card i {
+  .card .icon {
     font-size: 1.9rem;
     color: var(--text-soft);
     margin-bottom: 6px;

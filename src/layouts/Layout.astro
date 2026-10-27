@@ -1,25 +1,29 @@
 ---
 import '../styles/global.css';
+import { profile, socials } from '../data/site';
 
-const title = 'Janyar Muslem';
+const title = 'Janyar Muslem - IT Developer';
 const description =
   'Portfolio of Janyar Muslem, IT Developer at Holysmartphone. Work experience and web projects including holysmartphone.nl and Tripframe.';
-const ogImage = new URL('/img/profilephoto.jpeg', Astro.site).href;
+const ogImage = new URL(profile.photo, Astro.site).href;
+
+// Lets Google show the site as a person (name, job, profiles) in search results.
+const person = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: profile.name,
+  url: Astro.site?.href,
+  image: ogImage,
+  jobTitle: 'IT Developer',
+  worksFor: { '@type': 'Organization', name: 'Holysmartphone', url: 'https://holysmartphone.nl' },
+  address: { '@type': 'PostalAddress', addressLocality: profile.location, addressCountry: 'NL' },
+  sameAs: socials.filter((s) => s.href.startsWith('http')).map((s) => s.href),
+};
 ---
 
 <!doctype html>
 <html lang="en">
   <head>
-    <!-- Google tag (gtag.js) -->
-    <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-KYGVW65XLR"></script>
-    <script is:inline>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag('js', new Date());
-      gtag('config', 'G-KYGVW65XLR');
-    </script>
     <script is:inline>
       document.documentElement.classList.add('js');
     </script>
@@ -40,12 +44,12 @@ const ogImage = new URL('/img/profilephoto.jpeg', Astro.site).href;
     <meta property="og:image" content={ogImage} />
     <meta name="theme-color" content="#09090b" />
     <link rel="icon" href="/favicon.ico" />
+    <link rel="canonical" href={Astro.site} />
+    <script type="application/ld+json" set:html={JSON.stringify(person)} />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.31.0/dist/tabler-icons.min.css" />
-  </head>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />  </head>
   <body>
     <slot />
   </body>

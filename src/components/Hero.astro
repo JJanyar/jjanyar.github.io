@@ -1,4 +1,5 @@
 ---
+import Icon from './Icon.astro';
 import { profile, socials } from '../data/site';
 ---
 
@@ -20,7 +21,7 @@ import { profile, socials } from '../data/site';
           target={s.href.startsWith('http') || s.href.endsWith('.pdf') ? '_blank' : undefined}
           rel="noopener"
         >
-          <i class={`ti ${s.icon}`} />
+          <Icon name={s.icon} />
         </a>
       ))
     }
@@ -33,13 +34,13 @@ import { profile, socials } from '../data/site';
     <div class="details">
       <h2>{profile.name}</h2>
       <p class="meta">
-        <span><i class="ti ti-map-pin"></i> {profile.location}</span>
+        <span><Icon name="map-pin" /> {profile.location}</span>
         <span class="sep">│</span>
         <span>{profile.age} years old</span>
       </p>
       <blockquote>{profile.quote}</blockquote>
     </div>
-    <button class="close" type="button" aria-label="Close"><i class="ti ti-x"></i></button>
+    <button class="close" type="button" aria-label="Close"><Icon name="x" /></button>
   </div>
 </dialog>
 

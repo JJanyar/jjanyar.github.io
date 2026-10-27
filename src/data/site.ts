@@ -15,11 +15,11 @@ export const profile = {
 };
 
 export const socials = [
-  { label: 'GitHub', icon: 'ti-brand-github', href: 'https://github.com/JJanyar' },
-  { label: 'LinkedIn', icon: 'ti-brand-linkedin', href: 'https://linkedin.com/' },
-  { label: 'CV', icon: 'ti-file-cv', href: '/CV_Janyar.pdf' },
-  { label: 'Email', icon: 'ti-mail', href: `mailto:${profile.email}` },
-  { label: 'Phone', icon: 'ti-phone', href: `tel:${profile.phone}` },
+  { label: 'GitHub', icon: 'brand-github', href: 'https://github.com/JJanyar' },
+  { label: 'LinkedIn', icon: 'brand-linkedin', href: 'https://www.linkedin.com/in/janyarmuslem' },
+  { label: 'CV', icon: 'file-cv', href: '/CV_Janyar.pdf' },
+  { label: 'Email', icon: 'mail', href: `mailto:${profile.email}` },
+  { label: 'Phone', icon: 'phone', href: `tel:${profile.phone}` },
 ];
 
 export type Skill = { name: string; icon: string };
@@ -28,21 +28,21 @@ export const skillGroups: { label: string; skills: Skill[] }[] = [
   {
     label: 'Frontend',
     skills: [
-      { name: 'HTML', icon: 'ti-brand-html5' },
-      { name: 'CSS', icon: 'ti-brand-css3' },
-      { name: 'JavaScript', icon: 'ti-brand-javascript' },
+      { name: 'HTML', icon: 'brand-html5' },
+      { name: 'CSS', icon: 'brand-css3' },
+      { name: 'JavaScript', icon: 'brand-javascript' },
     ],
   },
   {
     label: 'Backend',
     skills: [
-      { name: 'PHP', icon: 'ti-brand-php' },
-      { name: 'MySQL', icon: 'ti-database' },
+      { name: 'PHP', icon: 'brand-php' },
+      { name: 'MySQL', icon: 'database' },
     ],
   },
   {
     label: 'CMS',
-    skills: [{ name: 'WordPress', icon: 'ti-brand-wordpress' }],
+    skills: [{ name: 'WordPress', icon: 'brand-wordpress' }],
   },
 ];
 
@@ -141,7 +141,7 @@ export const projects: Project[] = [
   {
     title: 'OvenExpert',
     description: 'Professional service landing page optimized for client conversion and online visibility.',
-    image: '/img/ovenexpert.gif',
+    image: '/img/ovenexpert.jpg',
     tags: ['Web Design', 'JS', 'SEO'],
     site: { href: 'https://ovenexpert.nl', label: 'Visit Site' },
   },
@@ -162,8 +162,8 @@ export const projects: Project[] = [
 ];
 
 export const contacts = [
-  { label: 'Email', icon: 'ti-mail', text: profile.email, href: `mailto:${profile.email}` },
-  { label: 'Phone', icon: 'ti-phone-ringing', text: profile.phoneDisplay, href: `tel:${profile.phone}` },
-  { label: 'GitHub', icon: 'ti-brand-github', text: '@JJanyar', href: 'https://github.com/JJanyar' },
-  { label: 'Instagram', icon: 'ti-brand-instagram', text: '@Janyar.7', href: 'https://instagram.com/janyar.7/' },
+  { label: 'Email', icon: 'mail', text: profile.email, href: `mailto:${profile.email}` },
+  { label: 'Phone', icon: 'phone-ringing', text: profile.phoneDisplay, href: `tel:${profile.phone}` },
+  { label: 'GitHub', icon: 'brand-github', text: '@JJanyar', href: 'https://github.com/JJanyar' },
+  { label: 'Instagram', icon: 'brand-instagram', text: '@Janyar.7', href: 'https://instagram.com/janyar.7/' },
 ];

@@ -1,4 +1,5 @@
 ---
+import Icon from './Icon.astro';
 import { skillGroups } from '../data/site';
 ---
 
@@ -10,7 +11,7 @@ import { skillGroups } from '../data/site';
         <ul>
           {group.skills.map((skill) => (
             <li>
-              <i class={`ti ${skill.icon}`} aria-hidden="true" />
+              <Icon name={skill.icon} />
               {skill.name}
             </li>
           ))}
@@ -73,7 +74,7 @@ import { skillGroups } from '../data/site';
       color 0.3s;
   }
 
-  li i {
+  li .icon {
     font-size: 1.15rem;
     color: var(--text-muted);
     transition: color 0.3s;
@@ -86,7 +87,7 @@ import { skillGroups } from '../data/site';
     color: var(--text);
   }
 
-  li:hover i {
+  li:hover .icon {
     color: var(--text);
   }
 

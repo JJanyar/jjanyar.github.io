@@ -1,13 +1,8 @@
 ---
-import { profile } from '../data/site';
+import Icon from './Icon.astro';
+import { socials } from '../data/site';
 
-const links = [
-  { label: 'Gravatar', icon: 'ti-brand-wordpress', href: 'https://janyar.info' },
-  { label: 'GitHub', icon: 'ti-brand-github', href: 'https://github.com/JJanyar' },
-  { label: 'LinkedIn', icon: 'ti-brand-linkedin', href: 'https://linkedin.com/' },
-  { label: 'Email', icon: 'ti-mail', href: `mailto:${profile.email}` },
-  { label: 'Download CV', icon: 'ti-file-cv', href: '/CV_Janyar.pdf' },
-];
+const links = [{ label: 'Gravatar', icon: 'brand-wordpress', href: 'https://janyar.info' }, ...socials];
 ---
 
 <footer>
@@ -18,14 +13,14 @@ const links = [
           href={l.href}
           title={l.label}
           aria-label={l.label}
-          target={l.href.startsWith('mailto') ? undefined : '_blank'}
+          target={l.href.startsWith('mailto') || l.href.startsWith('tel') ? undefined : '_blank'}
           rel="noopener"
         >
-          <i class={`ti ${l.icon}`} />
+          <Icon name={l.icon} />
         </a>
       ))
     }
-    <a href="#top" title="Back to top" aria-label="Back to top"><i class="ti ti-arrow-up"></i></a>
+    <a href="#top" title="Back to top" aria-label="Back to top"><Icon name="arrow-up" /></a>
   </div>
   <p>© {new Date().getFullYear()} Janyar Muslem • Built with <span class="heart">❤️</span></p>
 </footer>

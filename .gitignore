@@ -7,3 +7,7 @@ dist/
 .astro/
 # Playwright CLI output (may contain credentials)
 .playwright-cli/
+
+# Editor settings
+.idea/
+.vscode/

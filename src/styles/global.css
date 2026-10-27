@@ -43,6 +43,15 @@ a {
   color: inherit;
 }
 
+/* Inline SVG icons size with the surrounding font-size, like the old icon font */
+.icon {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  flex-shrink: 0;
+  vertical-align: -0.125em;
+}
+
 :focus-visible {
   outline: 2px solid var(--text-soft);
   outline-offset: 3px;

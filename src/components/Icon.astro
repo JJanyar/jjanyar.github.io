@@ -1,0 +1,28 @@
+---
+// Inline Tabler icon from src/icons, so only the icons we use are shipped.
+interface Props {
+  name: string;
+  class?: string;
+  [attr: string]: unknown;
+}
+
+const icons = import.meta.glob<string>('../icons/*.svg', { query: '?raw', import: 'default', eager: true });
+
+const { name, class: className, ...rest } = Astro.props;
+const svg = icons[`../icons/${name}.svg`];
+if (!svg) throw new Error(`Unknown icon: ${name}`);
+const inner = svg.replace(/^[\s\S]*?<svg[^>]*>|<\/svg>\s*$/g, '');
+---
+
+<svg
+  {...rest}
+  class:list={['icon', className]}
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  aria-hidden="true"
+  set:html={inner}
+/>
