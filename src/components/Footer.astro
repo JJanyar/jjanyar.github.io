@@ -13,7 +13,7 @@ const links = [{ label: 'Gravatar', icon: 'brand-wordpress', href: 'https://jany
           href={l.href}
           title={l.label}
           aria-label={l.label}
-          target={l.href.startsWith('mailto') || l.href.startsWith('tel') ? undefined : '_blank'}
+          target="_blank"
           rel="noopener"
         >
           <Icon name={l.icon} />

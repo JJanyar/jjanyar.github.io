@@ -1,11 +1,19 @@
 ---
 import Icon from './Icon.astro';
 import { profile, socials } from '../data/site';
+import { ageFrom } from '../lib/duration';
 ---
 
 <header class="header">
-  <button class="avatar" type="button" aria-label="Show more about Janyar" aria-haspopup="dialog">
+  <button
+    class="avatar"
+    type="button"
+    aria-label="Show more about Janyar"
+    title="More about me"
+    aria-haspopup="dialog"
+  >
     <img src={profile.photo} alt="Janyar's profile picture" width="80" height="80" />
+    <span class="hint"><Icon name="info-small" /></span>
   </button>
   <div class="intro">
     <h1>{profile.shortName}</h1>
@@ -18,7 +26,7 @@ import { profile, socials } from '../data/site';
           href={s.href}
           aria-label={s.label}
           title={s.label}
-          target={s.href.startsWith('http') || s.href.endsWith('.pdf') ? '_blank' : undefined}
+          target="_blank"
           rel="noopener"
         >
           <Icon name={s.icon} />
@@ -36,7 +44,7 @@ import { profile, socials } from '../data/site';
       <p class="meta">
         <span><Icon name="map-pin" /> {profile.location}</span>
         <span class="sep">│</span>
-        <span>{profile.age} years old</span>
+        <span class="age" data-birth={profile.birthMonth}>{ageFrom(profile.birthMonth)} years old</span>
       </p>
       <blockquote>{profile.quote}</blockquote>
     </div>
@@ -114,6 +122,28 @@ import { profile, socials } from '../data/site';
 
   .avatar:hover img {
     transform: scale(1.05);
+  }
+
+  /* Small badge so visitors see the photo opens something */
+  .hint {
+    position: absolute;
+    right: -2px;
+    bottom: -2px;
+    display: grid;
+    place-items: center;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: var(--text);
+    color: var(--bg);
+    border: 3px solid var(--bg);
+    font-size: 20px;
+    transition: transform 0.4s var(--ease-out);
+  }
+
+  .avatar:hover .hint,
+  .avatar:focus-visible .hint {
+    transform: scale(1.15);
   }
 
   h1 {
@@ -279,6 +309,12 @@ import { profile, socials } from '../data/site';
 </style>
 
 <script>
+  import { ageFrom } from '../lib/duration';
+
+  // Recalculate in the browser so the age is right without a new deploy.
+  const age = document.querySelector<HTMLElement>('.age')!;
+  age.textContent = `${ageFrom(age.dataset.birth!)} years old`;
+
   const modal = document.querySelector<HTMLDialogElement>('.profile-modal')!;
   document.querySelector('.avatar')!.addEventListener('click', () => modal.showModal());
   modal.querySelector('.close')!.addEventListener('click', () => modal.close());

@@ -30,6 +30,13 @@ export function formatDuration(start: string, end?: string) {
   return parts.join(' ');
 }
 
+// Whole years since a birth month; goes up on the first day of that month.
+export function ageFrom(birth: string, now = currentMonth()) {
+  const b = parse(birth);
+  const n = parse(now);
+  return Math.floor((n.y * 12 + n.m - (b.y * 12 + b.m)) / 12);
+}
+
 export function formatRange(start: string, end?: string) {
   return `${formatMonth(start)} - ${end ? formatMonth(end) : 'Present'} · ${formatDuration(start, end)}`;
 }

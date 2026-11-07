@@ -5,7 +5,8 @@ export const profile = {
   shortName: 'Janyar M.',
   role: 'IT Developer @ Holysmartphone',
   location: 'Beverwijk',
-  age: 19,
+  // Age is calculated from this (YYYY-MM): 19 in May 2026, +1 every May.
+  birthMonth: '2007-05',
   photo: '/img/profilephoto.jpeg',
   photoFallback: '/img/profilephoto_alt.png',
   quote: "I'm a passionate developer, always looking for new challenges and opportunities to learn.",
@@ -22,30 +23,6 @@ export const socials = [
   { label: 'Phone', icon: 'phone', href: `tel:${profile.phone}` },
 ];
 
-export type Skill = { name: string; icon: string };
-
-export const skillGroups: { label: string; skills: Skill[] }[] = [
-  {
-    label: 'Frontend',
-    skills: [
-      { name: 'HTML', icon: 'brand-html5' },
-      { name: 'CSS', icon: 'brand-css3' },
-      { name: 'JavaScript', icon: 'brand-javascript' },
-    ],
-  },
-  {
-    label: 'Backend',
-    skills: [
-      { name: 'PHP', icon: 'brand-php' },
-      { name: 'MySQL', icon: 'database' },
-    ],
-  },
-  {
-    label: 'CMS',
-    skills: [{ name: 'WordPress', icon: 'brand-wordpress' }],
-  },
-];
-
 // Dates are 'YYYY-MM'. Leave `end` out for a job you still have.
 export type Role = { title: string; start: string; end?: string; description: string };
 export type Company = { name: string; place?: string; logo: string; roles: Role[] };
@@ -60,7 +37,7 @@ export const experience: Company[] = [
         title: 'IT Developer',
         start: '2026-05',
         description:
-          'I develop and maintain holysmartphone.nl, the webshop and repair website of a phone, tablet and laptop repair store.',
+          'Holysmartphone is an electronics store with its own webshop and repair service. I build and maintain (web) applications and WordPress plugins that make the daily work there easier.',
       },
       {
         title: 'Intern',

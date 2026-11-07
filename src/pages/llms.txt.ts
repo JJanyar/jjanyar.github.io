@@ -1,7 +1,7 @@
 // /llms.txt: a plain summary of the portfolio for AI assistants (https://llmstxt.org).
 // Built from the same data as the site, so it never goes out of date.
 import type { APIRoute } from 'astro';
-import { contacts, experience, profile, projects, skillGroups, socials } from '../data/site';
+import { contacts, experience, profile, projects, socials } from '../data/site';
 import { formatRange } from '../lib/duration';
 
 export const GET: APIRoute = ({ site }) => {
@@ -22,15 +22,11 @@ export const GET: APIRoute = ({ site }) => {
 
   const text = `# ${profile.name}
 
-> ${profile.name} is an IT Developer at Holysmartphone, based in ${profile.location}, the Netherlands: building and maintaining holysmartphone.nl, working on Tripframe, and studying Software Development at ROC Nova College.
+> ${profile.name} is an IT Developer at Holysmartphone, based in ${profile.location}, the Netherlands: building (web) applications and WordPress plugins for the Holysmartphone electronics store, working on Tripframe, and studying Software Development at ROC Nova College.
 
 ## Experience
 
 ${jobs.join('\n')}
-
-## Skills
-
-${skillGroups.map((g) => `- ${g.label}: ${g.skills.map((s) => s.name).join(', ')}`).join('\n')}
 
 ## Projects
 

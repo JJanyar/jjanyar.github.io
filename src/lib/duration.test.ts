@@ -1,6 +1,12 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { formatDuration, formatRange } from './duration.ts';
+import { ageFrom, formatDuration, formatRange } from './duration.ts';
+
+test('age goes up every birth month', () => {
+  assert.equal(ageFrom('2007-05', '2026-05'), 19);
+  assert.equal(ageFrom('2007-05', '2027-04'), 19);
+  assert.equal(ageFrom('2007-05', '2027-05'), 20);
+});
 
 test('counts the start and end month, like LinkedIn', () => {
   assert.equal(formatDuration('2025-04', '2026-10'), '1 yr 7 mos');
