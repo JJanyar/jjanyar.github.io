@@ -5,8 +5,8 @@ export const profile = {
   shortName: 'Janyar M.',
   role: 'IT Developer @ Holysmartphone',
   location: 'Beverwijk',
-  // Age is calculated from this (YYYY-MM): 19 in May 2026, +1 every May.
-  birthMonth: '2007-05',
+  // Age is calculated from this (YYYY-MM): +1 every May.
+  birthMonth: '2006-05',
   photo: '/img/profilephoto.jpeg',
   photoFallback: '/img/profilephoto_alt.png',
   quote: "I'm a passionate developer, always looking for new challenges and opportunities to learn.",
