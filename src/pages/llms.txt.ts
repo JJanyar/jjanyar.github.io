@@ -31,7 +31,7 @@ ${jobs.join('\n')}
 ## Projects
 
 ${projects
-  .map((p) => `- [${p.title}](${p.site?.href ?? p.source}): ${p.description}${p.source ? ` Source: ${p.source}` : ''}`)
+  .map((p) => `- ${p.site || p.source ? `[${p.title}](${p.site?.href ?? p.source})` : p.title}: ${p.description}${p.source ? ` Source: ${p.source}` : ''}`)
   .join('\n')}
 
 ## Contact

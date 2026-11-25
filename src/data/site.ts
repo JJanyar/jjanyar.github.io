@@ -108,12 +108,36 @@ export const projects: Project[] = [
     site: { href: 'https://holysmartphone.nl', label: 'Visit Site' },
   },
   {
+    title: 'Holysmartphone Verkopen',
+    description:
+      'Trade-in website where customers sell their phone, tablet, laptop or game console: answer a few questions about the device and get an instant offer. Built for Holysmartphone.',
+    image: '/img/holysmartphone-verkopen.jpg',
+    tags: ['Web App', 'Trade-in', 'Price Quotes'],
+    site: { href: 'https://verkopen.holysmartphone.nl', label: 'Visit Site' },
+  },
+  {
     title: 'Tripframe',
     description:
       'Free dashcam footage viewer that opens your SD card in the browser, with synced front and rear playback, frame stepping and a GPS route map.',
     image: '/img/tripframe.jpg',
     tags: ['Web App', 'Video', 'GPS'],
     site: { href: 'https://tripframe.vercel.app', label: 'Visit Site' },
+  },
+  {
+    title: 'Osaiyh',
+    description:
+      'Website for Osaiyh B.V., a training and staffing company: courses and certificates such as VCA, traffic controller and first aid, and sign-up for work.',
+    image: '/img/osaiyh.webp',
+    tags: ['Web Design', 'Redesign', 'Courses'],
+    site: { href: 'https://osaiyh.nl', label: 'Visit Site' },
+  },
+  {
+    title: 'Euscheran',
+    description:
+      'Website for a garden and landscaping company in Bochum, in five languages including right-to-left Arabic. A calculator draws the layers under your driveway to size, and a map shows whether they work in your area.',
+    image: '/img/euscheran.jpg',
+    tags: ['Multilingual', 'Calculator', 'Web Design'],
+    site: { href: 'https://euscheran-preview.vercel.app/', label: 'Live Preview' },
   },
   {
     title: 'OvenExpert',
